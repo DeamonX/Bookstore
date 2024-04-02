@@ -1,7 +1,6 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
-export default async function Home() {
-  const translation = await getTranslations("Index");
-  return <>Locale Page</>;
+export default function Index() {
+  const t = useTranslations("Index");
+  return <h1>{t("title")}</h1>;
 }
