@@ -13,33 +13,69 @@ enum UserRole {
   AUTHOR
 }
 
+enum BookType {
+  ACTION
+  HORROR
+  ADVENTURE
+  FANTASY
+}
+
+enum BookConditions {
+  NEW
+  USED
+  RELIC
+}
 
 model User {
-  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
   password      String?
   accounts      Account[]
-  role          UserRole @default(VISITOR)
+  role          UserRole  @default(VISITOR)
 }
+
 model Account {
-  id                 String @id @default(auto()) @map("_id") @db.ObjectId
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  
-  access_token       String?  
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  
-  session_state      String?
-  
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId             String @db.ObjectId
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @db.ObjectId
 
   @@unique([provider, providerAccountId])
   @@map("account")
+}
+
+model Book {
+  id               String         @id @default(auto()) @map("_id") @db.ObjectId
+  author           String         @db.ObjectId
+  publisher        String         @db.ObjectId
+  title            String        
+  type             BookType
+  publication_date DateTime?
+  price            Int
+  condition        BookConditions
+}
+
+model Author {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  first_name String
+  last_name  String
+}
+
+model Publisher {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  name    String @unique
+  country String
 }
