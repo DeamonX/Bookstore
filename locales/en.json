@@ -1,5 +1,12 @@
 {
-  "Index": {
-    "title": "Hello world!"
+  "Auth": {
+    "login": "Log in",
+    "logout": "Log out"
+  },
+  "Validation": {
+    "required": {
+      "email": "Filling in the e-mail address is mandatory!",
+      "password": "Filling in the password is mandatory!"
+    }
   }
 }

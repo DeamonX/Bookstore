@@ -22,19 +22,18 @@ export default auth((req) => {
   // Authentikációs hívásokat ellenőrzések nélkül engedjük.
   if (isApiAuthRoute) {
     console.log("isApiAuthRoute");
-    return null;
+    return;
   }
-
+  const i18Response = intlMiddelware(req);
   if (isAuthRoute) {
     if (isLoggedIn) {
       console.log("isAuthRoute - isLoggedIn");
       return Response.redirect(new URL("/", nextUrl));
     }
     console.log("isAuthRoute - !isLoggedIn");
-    return null;
+    return i18Response;
   }
 
-  const i18Response = intlMiddelware(req);
   if (!isLoggedIn && isProtected) {
     let callbackUrl = nextUrl.pathname;
     if (nextUrl.search) {

@@ -1,5 +1,12 @@
 {
-  "Index": {
-    "title": "Helló világ!"
+  "Auth": {
+    "login": "Belépés",
+    "logout": "Kilépés"
+  },
+  "Validation": {
+    "required": {
+      "email": "E-mail cím kitöltése kötelező!",
+      "password": "Jelszó kitöltése kötelező!"
+    }
   }
 }

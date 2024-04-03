@@ -1,4 +1,9 @@
-export default function LocaleLayout({
+import { auth } from "@/auth";
+import Navigation from "@/components/navigation/navigation";
+import { ThemeProvider } from "@/components/themes/theme-provider";
+import { SessionProvider } from "next-auth/react";
+
+export default async function LocaleLayout({
   children,
   params: { locale },
 }: {
@@ -7,13 +12,17 @@ export default function LocaleLayout({
 }) {
   return (
     <html lang={locale}>
-      <body>{children}</body>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navigation />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
-
-// const locales = ["en", "hu"];
-
-// export function generateStaticParams() {
-//   return locales.map((locale) => ({ locale }));
-// }
