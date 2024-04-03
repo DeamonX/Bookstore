@@ -4,17 +4,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "../ui/button";
-import { getTranslations } from "next-intl/server";
+import { SignOutButton } from "../auth/sign-out";
+import { Session } from "next-auth";
 
-export async function ProfileButton() {
-  const authT = await getTranslations("Auth");
+export function ProfileButton({ user }: Session) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant={"ghost"}>Profile</Button>
+        <Button variant={"ghost"}>{user.name}</Button>
       </PopoverTrigger>
       <PopoverContent className="w-fit text-[14px]">
-        {authT("logout")}
+        <SignOutButton />
       </PopoverContent>
     </Popover>
   );

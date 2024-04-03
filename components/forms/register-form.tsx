@@ -1,12 +1,9 @@
 "use client";
 
 import * as z from "zod";
-import { useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
-import { useSearchParams } from "next/navigation";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
-
 import { Input } from "@/components/ui/input";
 import {
   Form,
@@ -17,58 +14,64 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { LoginSchema } from "@/schemas/auth";
-import { login } from "@/actions/login";
-import { FormError } from "../form-error";
-import { FormSuccess } from "../form-success";
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { useTranslations } from "next-intl";
+import { FormError } from "@/components/form-error";
+import { FormSuccess } from "@/components/form-success";
+import { RegisterSchema } from "@/schemas/auth";
+import { register } from "@/actions/register";
 import { AuthCardWrapper } from "../cards/auth-card";
 
-export const LoginForm = (locales: {}) => {
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl");
-  const urlError =
-    searchParams.get("error") === "OAuthAccountNotLinked"
-      ? "Email already in use with different provider!"
-      : "";
-  const [error, setError] = useState<string>();
-  const [success, setSuccess] = useState<string>();
+export const RegisterForm = () => {
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
-  const form = useForm<z.infer<typeof LoginSchema>>({
-    resolver: zodResolver(LoginSchema),
+
+  const form = useForm<z.infer<typeof RegisterSchema>>({
+    resolver: zodResolver(RegisterSchema),
     defaultValues: {
       email: "",
       password: "",
+      name: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     setError("");
     setSuccess("");
 
     startTransition(() => {
-      login(values, callbackUrl)
-        .then((data) => {
-          if (data?.error) {
-            form.reset();
-            setError(data.error);
-          }
-        })
-        .catch(() => setError("Something went wrong"));
+      register(values).then((data) => {
+        setError(data?.error);
+      });
     });
   };
 
   return (
     <AuthCardWrapper
-      headerLabel="Welcome back"
-      backButtonLabel="Don't have an account?"
-      backButtonHref="/register"
+      headerLabel="Create an account"
+      backButtonLabel="Already have an account?"
+      backButtonHref="/login"
       showSocial
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={isPending}
+                      placeholder="John Doe"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="email"
@@ -101,25 +104,16 @@ export const LoginForm = (locales: {}) => {
                       type="password"
                     />
                   </FormControl>
-                  <div className="flex w-full">
-                    <Button
-                      size="sm"
-                      variant="link"
-                      asChild
-                      className="px-0 font-normal"
-                    >
-                      <Link href="/reset">Forgot password?</Link>
-                    </Button>
-                  </div>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <FormError message={error || urlError} />
+
+          <FormError message={error} />
           <FormSuccess message={success} />
           <Button disabled={isPending} type="submit" className="w-full">
-            Login
+            Create an account
           </Button>
         </form>
       </Form>

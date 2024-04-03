@@ -45,9 +45,7 @@ export default auth((req) => {
     console.log("login redirect");
     return Response.redirect(
       new URL(
-        `/${
-          isEnglish ? "en" : "hu"
-        }/auth/login?callbackUrl=${encodedCallbackUrl}`,
+        `/${isEnglish ? "en" : "hu"}/login?callbackUrl=${encodedCallbackUrl}`,
         nextUrl
       )
     );

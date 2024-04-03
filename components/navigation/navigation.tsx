@@ -18,7 +18,7 @@ export default async function Navigation() {
       </div>
       <div className="flex ml-auto my-2 mx-4">
         <ModeToggle />
-        {session === null ? <SignInButton /> : <ProfileButton />}
+        {session === null ? <SignInButton /> : <ProfileButton {...session} />}
       </div>
     </nav>
   );

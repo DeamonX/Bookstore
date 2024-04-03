@@ -11,10 +11,12 @@ export const protectedRoutes = [""];
  * @type {string[]}
  */
 export const authRoutes = [
-  "/hu/auth/login",
-  "/en/auth/login",
-  "/auth/register",
-  "/auth/error",
+  "/hu/login",
+  "/en/login",
+  "/hu/register",
+  "/en/register",
+  "/hu/error",
+  "/en/error",
 ];
 
 /**
