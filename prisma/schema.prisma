@@ -9,8 +9,9 @@ datasource db {
 
 enum UserRole {
   ADMIN
-  VISITOR
+  PUBLISHER
   AUTHOR
+  VISITOR
 }
 
 enum BookType {
@@ -59,9 +60,9 @@ model Account {
 
 model Book {
   id               String         @id @default(auto()) @map("_id") @db.ObjectId
-  author           String         @db.ObjectId
-  publisher        String         @db.ObjectId
-  title            String        
+  authorId         String         @db.ObjectId
+  publisherId      String         @db.ObjectId
+  title            String
   type             BookType
   publication_date DateTime?
   price            Int
@@ -69,13 +70,12 @@ model Book {
 }
 
 model Author {
-  id         String @id @default(auto()) @map("_id") @db.ObjectId
-  first_name String
-  last_name  String
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  author_name String
 }
 
 model Publisher {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  name    String @unique
-  country String
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  publisher_name String @unique
+  country        String
 }

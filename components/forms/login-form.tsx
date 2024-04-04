@@ -21,8 +21,6 @@ import { LoginSchema } from "@/schemas/auth";
 import { login } from "@/actions/login";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { useTranslations } from "next-intl";
 import { AuthCardWrapper } from "../cards/auth-card";
 
 export const LoginForm = (locales: {}) => {

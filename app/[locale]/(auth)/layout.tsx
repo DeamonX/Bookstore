@@ -1,6 +1,4 @@
 import { ModeToggle } from "@/components/themes/theme-switcher";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { GiWhiteBook } from "react-icons/gi";
 
 export default async function AuthLayout({

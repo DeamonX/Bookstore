@@ -1,4 +1,10 @@
 {
+  "Generic": {
+    "title": "Title",
+    "price": "Price",
+    "condition": "Condition",
+    "country": "Country of origin"
+  },
   "Auth": {
     "login": "Log in",
     "logout": "Log out"
@@ -8,5 +14,11 @@
       "email": "Filling in the e-mail address is mandatory!",
       "password": "Filling in the password is mandatory!"
     }
+  },
+  "Book": {
+    "publication_date": "Publication Date"
+  },
+  "Publisher": {
+    "publisher_name": "Publisher"
   }
 }

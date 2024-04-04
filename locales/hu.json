@@ -1,4 +1,10 @@
 {
+  "Generic": {
+    "title": "Cím",
+    "price": "Ár",
+    "condition": "Állapot",
+    "country": "Származási ország"
+  },
   "Auth": {
     "login": "Belépés",
     "logout": "Kilépés"
@@ -8,5 +14,11 @@
       "email": "E-mail cím kitöltése kötelező!",
       "password": "Jelszó kitöltése kötelező!"
     }
+  },
+  "Book": {
+    "publication_date": "Kiadás dátuma"
+  },
+  "Publisher": {
+    "publisher_name": "Kiadó"
   }
 }
