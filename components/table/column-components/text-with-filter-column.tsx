@@ -7,12 +7,10 @@ export default function TextWithFilterTableColumn<T>({
   accessorKey,
   sortingButtonState,
   filterInputState,
-  states = { enableResizing: false },
 }: ColumnTextModel): ColumnDef<T> {
   return {
     id: id,
     accessorKey: accessorKey,
-    enableResizing: states.enableResizing,
     // filterFn: "textFilter",
     header: ({ header, column, table }) => (
       <SortingFilterHeader
