@@ -4,6 +4,7 @@ import { Author } from "@prisma/client";
 import TextWithFilterTableColumn from "../column-components/text-with-filter-column";
 import ActionsTableColumn from "../column-components/actions-column";
 import { BaseClientProps } from "@/models/components/type";
+import DateWithFilterTableColumn from "../column-components/date-with-filter-column";
 
 export function authorTableColumns({
   locale,
@@ -44,7 +45,7 @@ export function authorTableColumns({
         text: locale.author_country,
       },
     }),
-    TextWithFilterTableColumn<Author>({
+    DateWithFilterTableColumn<Author>({
       id: locale.dob,
       accessorKey: "dob",
       sortingButtonState: {

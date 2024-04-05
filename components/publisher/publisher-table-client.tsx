@@ -1,27 +1,19 @@
 "use client";
 
-import { BaseClientProps } from "@/models/components/type";
 import DataTable from "../table/data-table";
 import { publisherTableColumns } from "../table/publishers/publisher-table-columns";
+import { Publisher } from "@prisma/client";
 
-export function PublisherTableClient({ locale }: BaseClientProps) {
+type PublisherTableClientModel = {
+  publishers: Publisher[];
+  locale: Record<string, string>;
+};
+
+export function PublisherTableClient({
+  publishers,
+  locale,
+}: PublisherTableClientModel) {
   return (
-    <DataTable
-      columns={publisherTableColumns({ locale })}
-      data={[
-        {
-          date_of_establishment: null,
-          publisher_country: "HU",
-          publisher_name: "Teszt kiadó",
-          id: "1",
-        },
-        {
-          date_of_establishment: null,
-          publisher_country: "HU",
-          publisher_name: "Teszt kiadó2",
-          id: "2",
-        },
-      ]}
-    />
+    <DataTable columns={publisherTableColumns({ locale })} data={publishers} />
   );
 }

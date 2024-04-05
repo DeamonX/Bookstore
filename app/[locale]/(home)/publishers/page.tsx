@@ -3,10 +3,13 @@ import { NewPublisherForm } from "@/components/forms/publishers/new-publisher-fo
 import { PublisherTableClient } from "@/components/publisher/publisher-table-client";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { getPublishers } from "@/data/publisher";
 import { getTranslations } from "next-intl/server";
 
 export default async function PublishersPage() {
   // backend hívás a tábla soradataihoz.
+  const publishers = await getPublishers();
+
   const session = await auth();
 
   const user = session !== null ? session.user : undefined;
@@ -32,15 +35,18 @@ export default async function PublishersPage() {
         </Dialog>
       )}
 
-      <div className="mt-6">
-        <PublisherTableClient
-          locale={{
-            date_of_establishment: genericT("date_of_establishment"),
-            publisher_country: publisherT("publisher_country"),
-            publisher_name: publisherT("publisher_name"),
-          }}
-        />
-      </div>
+      {publishers !== null && (
+        <div className="mt-6">
+          <PublisherTableClient
+            publishers={publishers}
+            locale={{
+              date_of_establishment: genericT("date_of_establishment"),
+              publisher_country: publisherT("publisher_country"),
+              publisher_name: publisherT("publisher_name"),
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

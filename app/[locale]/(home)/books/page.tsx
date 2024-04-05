@@ -12,7 +12,7 @@ import { getTranslations } from "next-intl/server";
 export default async function BooksPage() {
   // backend hívás a tábla soradataihoz.
 
-  const books = (await getBooksTable()) as unknown as BookTableModel[];
+  const books = await getBooksTable();
 
   console.log(books);
 
@@ -40,21 +40,23 @@ export default async function BooksPage() {
           </DialogContent>
         </Dialog>
       )}
-      <div className="mt-6">
-        <BookTableClient
-          books={books}
-          locale={{
-            title: genericT("title"),
-            author_first_name: authorT("first_name"),
-            author_last_name: authorT("last_name"),
-            publication_date: bookT("publication_date"),
-            price: genericT("price"),
-            type: genericT("type"),
-            publisher_name: publisherT("publisher_name"),
-            country: genericT("country"),
-          }}
-        />
-      </div>
+      {books !== null && (
+        <div className="mt-6">
+          <BookTableClient
+            books={books}
+            locale={{
+              title: genericT("title"),
+              author_first_name: authorT("first_name"),
+              author_last_name: authorT("last_name"),
+              publication_date: bookT("publication_date"),
+              price: genericT("price"),
+              type: genericT("type"),
+              publisher_name: publisherT("publisher_name"),
+              country: genericT("country"),
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

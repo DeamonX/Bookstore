@@ -3,10 +3,13 @@ import { AuthorTableClient } from "@/components/author/author-table-client";
 import { NewAuthorForm } from "@/components/forms/authors/new-author-form";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { getAuthors } from "@/data/author";
 import { getTranslations } from "next-intl/server";
 
 export default async function AuthorsPage() {
   // backend hívás a tábla soradataihoz.
+  const authors = await getAuthors();
+  console.log(authors);
   const session = await auth();
 
   const user = session !== null ? session.user : undefined;
@@ -31,19 +34,21 @@ export default async function AuthorsPage() {
           </DialogContent>
         </Dialog>
       )}
-
-      <div className="mt-6">
-        <AuthorTableClient
-          locale={{
-            author_first_name: authorT("first_name"),
-            author_last_name: authorT("last_name"),
-            author_country: authorT("author_country"),
-            gender: genericT("gender"),
-            dob: genericT("dob"),
-            favorite_book_category: authorT("favorite_book_category"),
-          }}
-        />
-      </div>
+      {authors !== null && (
+        <div className="mt-6">
+          <AuthorTableClient
+            authors={authors}
+            locale={{
+              author_first_name: authorT("first_name"),
+              author_last_name: authorT("last_name"),
+              author_country: authorT("author_country"),
+              gender: genericT("gender"),
+              dob: genericT("dob"),
+              favorite_book_category: authorT("favorite_book_category"),
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

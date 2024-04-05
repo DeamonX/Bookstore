@@ -1,9 +1,10 @@
 "use server";
 
+import { BookTableModel } from "@/components/book/book-table-client";
 import { db } from "@/lib/db";
 export const getBooksTable = async () => {
   try {
-    return await db.book.findMany({
+    return (await db.book.findMany({
       include: {
         Author: {
           include: {
@@ -11,7 +12,7 @@ export const getBooksTable = async () => {
           },
         },
       },
-    });
+    })) as BookTableModel[];
   } catch {
     return null;
   }

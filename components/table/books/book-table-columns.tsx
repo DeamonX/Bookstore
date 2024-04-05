@@ -4,6 +4,7 @@ import TextWithFilterTableColumn from "../column-components/text-with-filter-col
 import ActionsTableColumn from "../column-components/actions-column";
 import { BaseClientProps } from "@/models/components/type";
 import { BookTableModel } from "@/components/book/book-table-client";
+import DateWithFilterTableColumn from "../column-components/date-with-filter-column";
 
 export function booksTableColumns({
   locale,
@@ -13,7 +14,7 @@ export function booksTableColumns({
       id: "actions",
       accessorKey: "",
       details: false,
-      expand: true,
+      expand: false,
       select: true,
     }),
     TextWithFilterTableColumn<BookTableModel>({
@@ -52,13 +53,13 @@ export function booksTableColumns({
         text: locale.publisher_name,
       },
     }),
-    // TextWithFilterTableColumn<BookTableModel>({
-    //   id: locale.publication_date,
-    //   accessorKey: "publication_date",
-    //   sortingButtonState: {
-    //     text: locale.publication_date,
-    //   },
-    // }),
+    DateWithFilterTableColumn<BookTableModel>({
+      id: locale.publication_date,
+      accessorKey: "publication_date",
+      sortingButtonState: {
+        text: locale.publication_date,
+      },
+    }),
     TextWithFilterTableColumn<BookTableModel>({
       id: locale.price,
       accessorKey: "price",
@@ -66,12 +67,5 @@ export function booksTableColumns({
         text: locale.price,
       },
     }),
-    // TextWithFilterTableColumn<BookTableModel>({
-    //   id: locale.country,
-    //   accessorKey: "author_country",
-    //   sortingButtonState: {
-    //     text: locale.country,
-    //   },
-    // }),
   ];
 }

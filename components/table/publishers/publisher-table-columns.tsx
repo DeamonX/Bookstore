@@ -4,6 +4,7 @@ import { Publisher } from "@prisma/client";
 import TextWithFilterTableColumn from "../column-components/text-with-filter-column";
 import ActionsTableColumn from "../column-components/actions-column";
 import { BaseClientProps } from "@/models/components/type";
+import DateWithFilterTableColumn from "../column-components/date-with-filter-column";
 
 export function publisherTableColumns({
   locale,
@@ -30,7 +31,7 @@ export function publisherTableColumns({
         text: locale.publisher_country,
       },
     }),
-    TextWithFilterTableColumn<Publisher>({
+    DateWithFilterTableColumn<Publisher>({
       id: locale.date_of_establishment,
       accessorKey: "date_of_establishment",
       sortingButtonState: {
