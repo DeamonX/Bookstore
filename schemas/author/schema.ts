@@ -1,4 +1,4 @@
-import { BookType, Genders } from "@prisma/client";
+import { BookType, COUNTRY, Genders } from "@prisma/client";
 import { z } from "zod";
 
 export const NewAuthorSchema = z.object({
@@ -8,7 +8,7 @@ export const NewAuthorSchema = z.object({
   author_last_name: z.string().optional(),
   gender: z.nativeEnum(Genders),
   dob: z.date().nullable(),
-  author_country: z.string().optional(),
+  author_country: z.nativeEnum(COUNTRY).optional(),
   publisherId: z.string().min(1, {
     message: "Publisher is required",
   }),
