@@ -22,13 +22,14 @@ import { login } from "@/actions/login";
 import { FormError } from "../../form-error";
 import { FormSuccess } from "../../form-success";
 import { AuthCardWrapper } from "../../cards/auth-card";
+import { BaseClientProps } from "@/models/components/type";
 
-export const LoginForm = (locales: {}) => {
+export const LoginForm = ({ locale }: BaseClientProps) => {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked"
-      ? "Email already in use with different provider!"
+      ? locale.OAuthAccountNotLinked
       : "";
   const [error, setError] = useState<string>();
   const [success, setSuccess] = useState<string>();
@@ -53,14 +54,14 @@ export const LoginForm = (locales: {}) => {
             setError(data.error);
           }
         })
-        .catch(() => setError("Something went wrong"));
+        .catch(() => setError(locale.something_went_wrong));
     });
   };
 
   return (
     <AuthCardWrapper
-      headerLabel="Welcome back"
-      backButtonLabel="Don't have an account?"
+      headerLabel={locale.welcome_back}
+      backButtonLabel={locale.do_not_have_account}
       backButtonHref="/register"
       showSocial
     >
@@ -72,7 +73,7 @@ export const LoginForm = (locales: {}) => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{locale.email}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -90,7 +91,7 @@ export const LoginForm = (locales: {}) => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>{locale.password}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -106,7 +107,7 @@ export const LoginForm = (locales: {}) => {
                       asChild
                       className="px-0 font-normal"
                     >
-                      <Link href="/reset">Forgot password?</Link>
+                      <Link href="/reset">{locale.forgot_password}</Link>
                     </Button>
                   </div>
                   <FormMessage />
@@ -117,7 +118,7 @@ export const LoginForm = (locales: {}) => {
           <FormError message={error || urlError} />
           <FormSuccess message={success} />
           <Button disabled={isPending} type="submit" className="w-full">
-            Login
+            {locale.login}
           </Button>
         </form>
       </Form>

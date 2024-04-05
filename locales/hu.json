@@ -7,7 +7,14 @@
     "gender": "Nem",
     "dob": "Születési dátum",
     "add": "Új hozzáadása",
-    "date_of_establishment": "Alapítás dátuma"
+    "date_of_establishment": "Alapítás dátuma",
+    "something_went_wrong": "Probléma merült fel a folyamat során!",
+    "email": "E-mail cím",
+    "password": "Jelszó",
+    "name": "Név",
+    "error": {
+      "invalid_fields": "Érvénytelen mezők!"
+    }
   },
   "Navigation": {
     "home": "Főoldal",
@@ -213,7 +220,16 @@
   },
   "Auth": {
     "login": "Belépés",
-    "logout": "Kilépés"
+    "logout": "Kilépés",
+    "OAuthAccountNotLinked": "Ez az e-mail cím már hozzá van társítva egy fiókhoz!",
+    "welcome_back": "Üdvözöljük újra!",
+    "do_not_have_account": "Nincs még fiókod?",
+    "forgot_password": "Elfelejtetted a jelszót?",
+    "create_account": "Fiók létrehozás",
+    "already_have_account": "Van már fiókod?",
+    "error": {
+      "email_taken": "Ezzel az email címmel már létezik fiók!"
+    }
   },
   "Validation": {
     "required": {

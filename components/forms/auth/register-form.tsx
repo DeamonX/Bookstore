@@ -19,10 +19,10 @@ import { FormSuccess } from "@/components/form-success";
 import { RegisterSchema } from "@/schemas/auth/schema";
 import { register } from "@/actions/register";
 import { AuthCardWrapper } from "../../cards/auth-card";
+import { BaseClientProps } from "@/models/components/type";
 
-export const RegisterForm = () => {
+export const RegisterForm = ({ locale }: BaseClientProps) => {
   const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
@@ -36,19 +36,27 @@ export const RegisterForm = () => {
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     setError("");
-    setSuccess("");
 
     startTransition(() => {
       register(values).then((data) => {
-        setError(data?.error);
+        switch (data?.error) {
+          case "invalid_fields":
+            setError(locale.error_invalid_fields);
+            break;
+          case "email_taken":
+            setError(locale.error_email_taken);
+            break;
+          default:
+            break;
+        }
       });
     });
   };
 
   return (
     <AuthCardWrapper
-      headerLabel="Create an account"
-      backButtonLabel="Already have an account?"
+      headerLabel={locale.create_account}
+      backButtonLabel={locale.already_have_account}
       backButtonHref="/login"
       showSocial
     >
@@ -60,7 +68,7 @@ export const RegisterForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>{locale.name}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -77,7 +85,7 @@ export const RegisterForm = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{locale.email}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -95,7 +103,7 @@ export const RegisterForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>{locale.password}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -111,9 +119,8 @@ export const RegisterForm = () => {
           </div>
 
           <FormError message={error} />
-          <FormSuccess message={success} />
           <Button disabled={isPending} type="submit" className="w-full">
-            Create an account
+            {locale.create_account}
           </Button>
         </form>
       </Form>
