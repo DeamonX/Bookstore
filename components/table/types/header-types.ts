@@ -1,4 +1,3 @@
-import { ColumnStates } from "./column-states";
 import {
   ColumnFilterInputModel,
   ColumnSortingButtonModel,
@@ -10,7 +9,6 @@ import {
 } from "./table-props";
 
 type HeaderBaseModel = {
-  headerFunctions: ColumnStates;
   headerTextStyle?: string;
 };
 

@@ -2,8 +2,18 @@
   "Generic": {
     "title": "Title",
     "price": "Price",
-    "condition": "Condition",
-    "country": "Country of origin"
+    "type": "Type",
+    "country": "Country of origin",
+    "gender": "Gender",
+    "dob": "Date of Birth",
+    "add": "Add new",
+    "date_of_establishment": "Date of Establishment"
+  },
+  "Navigation": {
+    "home": "Home",
+    "books": "Books",
+    "authors": "Authors",
+    "publishers": "Publishers"
   },
   "Auth": {
     "login": "Log in",
@@ -16,9 +26,19 @@
     }
   },
   "Book": {
+    "page_title": "Books",
     "publication_date": "Publication Date"
   },
   "Publisher": {
-    "publisher_name": "Publisher"
+    "page_title": "Publishers",
+    "publisher_name": "Publisher",
+    "publisher_country": "Publisher's origin"
+  },
+  "Author": {
+    "page_title": "Authors",
+    "first_name": "Author's first name",
+    "last_name": "Author's last name",
+    "author_country": "Country of Origin",
+    "favorite_book_category": "Favorite book category"
   }
 }

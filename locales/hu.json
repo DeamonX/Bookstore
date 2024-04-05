@@ -2,8 +2,18 @@
   "Generic": {
     "title": "Cím",
     "price": "Ár",
-    "condition": "Állapot",
-    "country": "Származási ország"
+    "type": "Típus",
+    "country": "Származási ország",
+    "gender": "Nem",
+    "dob": "Születési dátum",
+    "add": "Új hozzáadása",
+    "date_of_establishment": "Alapítás dátuma"
+  },
+  "Navigation": {
+    "home": "Főoldal",
+    "books": "Könyvek",
+    "authors": "Írók",
+    "publishers": "Kiadók"
   },
   "Auth": {
     "login": "Belépés",
@@ -16,9 +26,19 @@
     }
   },
   "Book": {
+    "page_title": "Könyvek",
     "publication_date": "Kiadás dátuma"
   },
   "Publisher": {
-    "publisher_name": "Kiadó"
+    "page_title": "Kiadók",
+    "publisher_name": "Kiadó",
+    "publisher_country": "Kiadó származása"
+  },
+  "Author": {
+    "page_title": "Írók",
+    "first_name": "Író vezetékneve",
+    "last_name": "Író keresztneve",
+    "author_country": "Író származása",
+    "favorite_book_category": "Kedvenc könyv kategória"
   }
 }

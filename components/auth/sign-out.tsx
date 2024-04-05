@@ -11,7 +11,7 @@ export async function SignOutButton() {
         await signOut();
       }}
     >
-      <Button className="text-primary-foreground" variant={"link"}>
+      <Button className="text-foreground" variant={"link"}>
         {authT("logout")}
       </Button>
     </form>

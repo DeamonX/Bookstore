@@ -17,10 +17,6 @@ export default function TextWithFilterTableColumn<T>({
         header={header}
         column={column}
         table={table}
-        headerFunctions={{
-          enableResizing: true,
-          enableSorting: true,
-        }}
         sortingButtonState={{ sortingButtonState }}
         filterInputState={{ filterInputState }}
       />

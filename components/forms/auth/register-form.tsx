@@ -16,9 +16,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
-import { RegisterSchema } from "@/schemas/auth";
+import { RegisterSchema } from "@/schemas/auth/schema";
 import { register } from "@/actions/register";
-import { AuthCardWrapper } from "../cards/auth-card";
+import { AuthCardWrapper } from "../../cards/auth-card";
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>("");

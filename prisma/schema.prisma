@@ -21,10 +21,9 @@ enum BookType {
   FANTASY
 }
 
-enum BookConditions {
-  NEW
-  USED
-  RELIC
+enum Genders {
+  MALE
+  FEMALE
 }
 
 model User {
@@ -59,23 +58,34 @@ model Account {
 }
 
 model Book {
-  id               String         @id @default(auto()) @map("_id") @db.ObjectId
-  authorId         String         @db.ObjectId
-  publisherId      String         @db.ObjectId
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
+  authorId         String    @db.ObjectId
+  publisherId      String    @db.ObjectId
   title            String
   type             BookType
   publication_date DateTime?
   price            Int
-  condition        BookConditions
+  Author           Author    @relation(fields: [authorId], references: [id])
 }
 
 model Author {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
-  author_name String
+  id                     String     @id @default(auto()) @map("_id") @db.ObjectId
+  author_first_name      String
+  author_last_name       String?
+  gender                 Genders
+  dob                    DateTime?
+  author_country         String?
+  favorite_bookId        String?    @db.ObjectId
+  favorite_book_category BookType?
+  books                  Book[]
+  Publisher              Publisher? @relation(fields: [publisherId], references: [id])
+  publisherId            String?    @db.ObjectId
 }
 
 model Publisher {
-  id             String @id @default(auto()) @map("_id") @db.ObjectId
-  publisher_name String @unique
-  country        String
+  id                    String    @id @default(auto()) @map("_id") @db.ObjectId
+  publisher_name        String    @unique
+  date_of_establishment DateTime?
+  publisher_country     String
+  authors               Author[]
 }
