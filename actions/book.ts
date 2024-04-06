@@ -9,17 +9,17 @@ export default async function addBook(values: z.infer<typeof NewBookSchema>) {
   const validatedFields = NewBookSchema.safeParse(values);
 
   if (!validatedFields.success) {
-    return { error: "Invalid fields!" };
+    return { error: "invalid_fields" };
   }
   const existingBook = await getBookByName(validatedFields.data.title);
   console.log(existingBook);
   if (existingBook) {
-    return { error: "Book with this title already exists!" };
+    return { error: "title_exists" };
   }
 
   await db.book.create({
     data: validatedFields.data,
   });
 
-  return { success: "Success" };
+  return { success: "add_success" };
 }

@@ -4,16 +4,21 @@
     "price": "Price",
     "type": "Type",
     "country": "Country of origin",
+    "country_placeholder": "Select country of origin!",
     "gender": "Gender",
+    "gender_placeholder": "Select gender!",
     "dob": "Date of Birth",
     "add": "Add new",
     "date_of_establishment": "Date of Establishment",
-    "something_went_wrong": "Something went wrong!",
     "email": "Email",
     "password": "Password",
     "name": "Name",
     "error": {
-      "invalid_fields": "Invalid fields!"
+      "invalid_fields": "Invalid fields!",
+      "something_went_wrong": "Something went wrong!"
+    },
+    "success": {
+      "add_success": "Successful creation!"
     }
   },
   "Navigation": {
@@ -239,18 +244,40 @@
   },
   "Book": {
     "page_title": "Books",
-    "publication_date": "Publication Date"
+    "favorite_placeholder": "Select favorite book",
+    "favorite_type_placeholder": "Select favorite book type",
+    "favorite_type": "Favorite book type",
+    "type_placeholder": "Select book type",
+    "publication_date": "Publication Date",
+    "new_book": "New Book",
+    "insert_book": "Add book",
+    "error": {
+      "title_exists": "Book with this title already exists!"
+    }
   },
   "Publisher": {
+    "new": "New Publisher",
     "page_title": "Publishers",
-    "publisher_name": "Publisher",
-    "publisher_country": "Publisher's origin"
+    "placeholder": "Select publisher",
+    "text": "Publisher",
+    "publisher_name": "Publisher's name",
+    "publisher_country": "Publisher's origin",
+    "add_publisher": "Add publisher",
+    "error": {
+      "name_exists": "Publisher with this name already exists!"
+    }
   },
   "Author": {
+    "new_author": "New Author",
+    "publisher": "Author's Publisher",
     "page_title": "Authors",
+    "placeholder": "Select author",
+    "text": "Author",
     "first_name": "Author's first name",
     "last_name": "Author's last name",
     "author_country": "Country of Origin",
-    "favorite_book_category": "Favorite book category"
+    "favorite_book_category": "Favorite book type",
+    "favorite_book": "Author's favorite book",
+    "insert_author": "Add Author"
   }
 }

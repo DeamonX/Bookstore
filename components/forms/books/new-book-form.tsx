@@ -18,8 +18,9 @@ import { BookType } from "@prisma/client";
 import { FormSuccess } from "@/components/form-success";
 import { FormError } from "@/components/form-error";
 import addBook from "@/actions/book";
+import { BaseClientProps } from "@/models/components/type";
 
-export const NewBookForm = (locales: {}) => {
+export const NewBookForm = ({ locale }: BaseClientProps) => {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>();
   const [success, setSuccess] = useState<string>();
@@ -46,19 +47,26 @@ export const NewBookForm = (locales: {}) => {
         .then((data) => {
           if (data?.error) {
             form.reset();
-            setError(data.error);
+            switch (data?.error) {
+              case "invalid_fields":
+                setError(locale.invalid_fields);
+                break;
+              case "title_exists":
+                setError(locale.book_title_exists);
+                break;
+            }
           }
           if (data?.success) {
             form.reset();
-            setSuccess(data.success);
+            setSuccess(locale.success);
           }
         })
-        .catch(() => setError("Something went wrong"));
+        .catch(() => setError(locale.something_went_wrong));
     });
   };
 
   return (
-    <FormCardWrapper headerLabel="New Book">
+    <FormCardWrapper headerLabel={locale.new_book}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
@@ -73,10 +81,10 @@ export const NewBookForm = (locales: {}) => {
                 };
               })}
               formControl={form.control}
-              placeholder="Select author"
+              placeholder={locale.author_placeholder}
               id="authorId"
               required
-              text="Author"
+              text={locale.author_text}
               disabled={isPending}
             />
             <FormSelectInput
@@ -88,10 +96,10 @@ export const NewBookForm = (locales: {}) => {
                 };
               })}
               formControl={form.control}
-              placeholder="Select publisher"
+              placeholder={locale.publisher_placeholder}
               id="publisherId"
               required
-              text="Publisher"
+              text={locale.publisher_placeholder}
               disabled={isPending}
             />
 
@@ -99,24 +107,24 @@ export const NewBookForm = (locales: {}) => {
               formControl={form.control}
               id="title"
               required
-              text="Title"
+              text={locale.book_title}
               disabled={isPending}
             />
             <FormSelectInput
               formSetValue={form.setValue}
-              placeholder="Select type"
+              placeholder={locale.book_type_placeholder}
               items={bookTypes}
               formControl={form.control}
               id="type"
               required
-              text="Type"
+              text={locale.book_type}
               disabled={isPending}
             />
             <FormDatePickerInput
               formControl={form.control}
               id="publication_date"
               required
-              text="Publication Date"
+              text={locale.publication_date}
               disabled={isPending}
             />
 
@@ -125,14 +133,14 @@ export const NewBookForm = (locales: {}) => {
               id="price"
               required
               inputType="number"
-              text="Price"
+              text={locale.book_price}
               disabled={isPending}
             />
           </div>
           <FormSuccess message={success} />
           <FormError message={error} />
           <Button disabled={isPending} type="submit" className="w-full">
-            Login
+            {locale.insert_book}
           </Button>
         </form>
       </Form>

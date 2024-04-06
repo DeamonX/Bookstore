@@ -100,7 +100,8 @@ export const LoginForm = ({ locale }: BaseClientProps) => {
                       type="password"
                     />
                   </FormControl>
-                  <div className="flex w-full">
+                  <FormMessage />
+                  {/* <div className="flex w-full">
                     <Button
                       size="sm"
                       variant="link"
@@ -109,8 +110,7 @@ export const LoginForm = ({ locale }: BaseClientProps) => {
                     >
                       <Link href="/reset">{locale.forgot_password}</Link>
                     </Button>
-                  </div>
-                  <FormMessage />
+                  </div> */}
                 </FormItem>
               )}
             />

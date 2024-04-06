@@ -1,8 +1,5 @@
 import { auth } from "@/auth";
-import {
-  BookTableClient,
-  BookTableModel,
-} from "@/components/book/book-table-client";
+import { BookTableClient } from "@/components/book/book-table-client";
 import { NewBookForm } from "@/components/forms/books/new-book-form";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -13,8 +10,6 @@ export default async function BooksPage() {
   // backend hívás a tábla soradataihoz.
 
   const books = await getBooksTable();
-
-  console.log(books);
 
   const session = await auth();
 
@@ -35,8 +30,26 @@ export default async function BooksPage() {
               {genericT("add")}
             </Button>
           </DialogTrigger>
-          <DialogContent className="p-0 w-auto  border-none">
-            <NewBookForm />
+          <DialogContent className="p-0 w-auto border-none">
+            <NewBookForm
+              locale={{
+                invalid_fields: genericT("error.invalid_fields"),
+                something_went_wrong: genericT("error.something_went_wrong"),
+                success: genericT("success.add_success"),
+                new_book: bookT("new_book"),
+                author_placeholder: authorT("placeholder"),
+                author_text: authorT("text"),
+                publisher_placeholder: publisherT("placeholder"),
+                publisher_text: publisherT("text"),
+                book_title: genericT("title"),
+                book_title_exists: bookT("error.title_exists"),
+                book_type: genericT("type"),
+                book_type_placeholder: bookT("type_placeholder"),
+                publication_date: bookT("publication_date"),
+                book_price: genericT("price"),
+                insert_book: bookT("insert_book"),
+              }}
+            />
           </DialogContent>
         </Dialog>
       )}
@@ -51,7 +64,7 @@ export default async function BooksPage() {
               publication_date: bookT("publication_date"),
               price: genericT("price"),
               type: genericT("type"),
-              publisher_name: publisherT("publisher_name"),
+              publisher_name: publisherT("text"),
               country: genericT("country"),
             }}
           />

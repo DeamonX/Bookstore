@@ -30,7 +30,18 @@ export default async function PublishersPage() {
             </Button>
           </DialogTrigger>
           <DialogContent className="p-0 w-auto bg-transparent border-none">
-            <NewPublisherForm />
+            <NewPublisherForm
+              locale={{
+                invalid_fields: genericT("error.invalid_fields"),
+                name_exists: publisherT("error.name_exists"),
+                new: publisherT("new"),
+                success: genericT("success.add_success"),
+                date_of_establishment: genericT("date_of_establishment"),
+                publisher_country: publisherT("publisher_country"),
+                publisher_name: publisherT("publisher_name"),
+                add_publisher: publisherT("add_publisher"),
+              }}
+            />
           </DialogContent>
         </Dialog>
       )}
@@ -43,6 +54,7 @@ export default async function PublishersPage() {
               date_of_establishment: genericT("date_of_establishment"),
               publisher_country: publisherT("publisher_country"),
               publisher_name: publisherT("publisher_name"),
+              add_publisher: publisherT("add_publisher"),
             }}
           />
         </div>

@@ -1,8 +1,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
-import { hu } from "date-fns/locale";
+import { hu, enUS } from "date-fns/locale";
 import SortingFilterHeader from "./headers/sorting-filter-header";
 import { ColumnTextModel } from "../types/column-types";
+import { useLocale } from "next-intl";
 
 export default function DateWithFilterTableColumn<T>({
   id,
@@ -10,6 +11,7 @@ export default function DateWithFilterTableColumn<T>({
   sortingButtonState,
   filterInputState,
 }: ColumnTextModel): ColumnDef<T> {
+  const locale = useLocale();
   return {
     id: id,
     accessorKey: accessorKey,
@@ -29,7 +31,7 @@ export default function DateWithFilterTableColumn<T>({
         return (
           <>
             {format(date, "PP", {
-              locale: hu,
+              locale: locale === "en" ? enUS : hu,
             })}
           </>
         );

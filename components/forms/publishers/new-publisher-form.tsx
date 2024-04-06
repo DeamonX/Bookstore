@@ -13,8 +13,9 @@ import { NewPublisherSchema } from "@/schemas/publisher/schema";
 import addPublisher from "@/actions/publisher";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
+import { BaseClientProps } from "@/models/components/type";
 
-export const NewPublisherForm = (locales: {}) => {
+export const NewPublisherForm = ({ locale }: BaseClientProps) => {
   const [error, setError] = useState<string>();
   const [success, setSuccess] = useState<string>();
   const [isPending, startTransition] = useTransition();
@@ -34,19 +35,26 @@ export const NewPublisherForm = (locales: {}) => {
         .then((data) => {
           if (data?.error) {
             form.reset();
-            setError(data.error);
+            switch (data?.error) {
+              case "invalid_fields":
+                setError(locale.invalid_fields);
+                break;
+              case "name_exists":
+                setError(locale.name_exists);
+                break;
+            }
           }
           if (data?.success) {
-            setSuccess(data.success);
             form.reset();
+            setSuccess(locale.success);
           }
         })
-        .catch(() => setError("Something went wrong"));
+        .catch(() => setError(locale.something_went_wrong));
     });
   };
 
   return (
-    <FormCardWrapper headerLabel="New Publisher">
+    <FormCardWrapper headerLabel={locale.new_publisher}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
@@ -54,14 +62,14 @@ export const NewPublisherForm = (locales: {}) => {
               formControl={form.control}
               id="publisher_name"
               required
-              text="Publisher's name"
+              text={locale.publisher_name}
               disabled={isPending}
             />
             <FormTextInput
               formControl={form.control}
               id="publisher_country"
               required
-              text="Publisher's origin"
+              text={locale.publisher_country}
               disabled={isPending}
             />
 
@@ -69,14 +77,14 @@ export const NewPublisherForm = (locales: {}) => {
               formControl={form.control}
               id="date_of_establishment"
               required
-              text="Publication Date"
+              text={locale.date_of_establishment}
               disabled={isPending}
             />
           </div>
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button disabled={isPending} type="submit" className="w-full">
-            Add
+            {locale.add_publisher}
           </Button>
         </form>
       </Form>

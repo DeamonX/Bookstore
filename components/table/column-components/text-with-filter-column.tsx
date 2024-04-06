@@ -22,7 +22,11 @@ export default function TextWithFilterTableColumn<T>({
       />
     ),
     cell: ({ cell }) => {
-      return <span>{cell.getValue() as string}</span>;
+      return (
+        <span>
+          {cell.getValue() === null ? "" : (cell.getValue() as string)}
+        </span>
+      );
     },
   };
 }

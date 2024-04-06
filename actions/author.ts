@@ -10,12 +10,12 @@ export default async function addAuhtor(
   const validatedFields = NewAuthorSchema.safeParse(values);
 
   if (!validatedFields.success) {
-    return { error: "Invalid fields!" };
+    return { error: "invalid_fields" };
   }
 
   await db.author.create({
     data: validatedFields.data,
   });
 
-  return { success: "Success" };
+  return { success: "add_success" };
 }

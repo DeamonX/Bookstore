@@ -4,16 +4,21 @@
     "price": "Ár",
     "type": "Típus",
     "country": "Származási ország",
+    "country_placeholder": "Válassz származási országot!",
     "gender": "Nem",
+    "gender_placeholder": "Válassz nemet!",
     "dob": "Születési dátum",
     "add": "Új hozzáadása",
     "date_of_establishment": "Alapítás dátuma",
-    "something_went_wrong": "Probléma merült fel a folyamat során!",
     "email": "E-mail cím",
     "password": "Jelszó",
     "name": "Név",
     "error": {
-      "invalid_fields": "Érvénytelen mezők!"
+      "invalid_fields": "Érvénytelen mezők!",
+      "something_went_wrong": "Probléma merült fel a folyamat során!"
+    },
+    "success": {
+      "add_success": "Sikeres létrehozás!"
     }
   },
   "Navigation": {
@@ -239,18 +244,40 @@
   },
   "Book": {
     "page_title": "Könyvek",
-    "publication_date": "Kiadás dátuma"
+    "favorite_placeholder": "Válassz ki a kedvenc könyvet!",
+    "favorite_type_placeholder": "Válassz ki a kedvenc könyv kategóriát!",
+    "type_placeholder": "Válassz egy könyv típust!",
+    "favorite_type": "Kedvenc könyv típus",
+    "publication_date": "Kiadás dátuma",
+    "new_book": "Új könyv",
+    "insert_book": "Könyv hozzáadása",
+    "error": {
+      "title_exists": "Már létezik könyv ilyen címmel!"
+    }
   },
   "Publisher": {
+    "new": "Új kiadó",
     "page_title": "Kiadók",
-    "publisher_name": "Kiadó",
-    "publisher_country": "Kiadó származása"
+    "placeholder": "Válassz kiadót!",
+    "text": "Kiadó",
+    "publisher_name": "Kiadó neve",
+    "publisher_country": "Kiadó származása",
+    "add_publisher": "Kiadó hozzáadása",
+    "error": {
+      "name_exists": "Már létezik kiadó ilyen névvel!"
+    }
   },
   "Author": {
+    "new_author": "Új Író",
+    "publisher": "Író kiadója",
     "page_title": "Írók",
+    "placeholder": "Válassz írót!",
+    "text": "Író",
     "first_name": "Író vezetékneve",
     "last_name": "Író keresztneve",
     "author_country": "Író származása",
-    "favorite_book_category": "Kedvenc könyv kategória"
+    "favorite_book_category": "Kedvenc könyv kategória",
+    "favorite_book": "Író kedvenc könyve",
+    "insert_author": "Író hozzáadása"
   }
 }

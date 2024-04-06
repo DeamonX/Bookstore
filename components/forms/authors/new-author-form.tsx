@@ -14,19 +14,23 @@ import { FormSuccess } from "@/components/form-success";
 import { NewAuthorSchema } from "@/schemas/author/schema";
 import addAuhtor from "@/actions/author";
 import { enumToSelectFieldItems } from "@/lib/utils";
-import { Genders } from "@prisma/client";
+import { BookType, COUNTRY, Genders } from "@prisma/client";
 import FormSelectInput from "@/components/input-fields/select-input";
 import useGetPublishers from "@/hooks/publisher/useGetAuthors";
 import useGetBooks from "@/hooks/book/useGetBooks";
+import { BaseClientProps } from "@/models/components/type";
 
-export const NewAuthorForm = (locales: {}) => {
+export const NewAuthorForm = ({ locale }: BaseClientProps) => {
   const [error, setError] = useState<string>();
   const [success, setSuccess] = useState<string>();
   const [isPending, startTransition] = useTransition();
 
   const { publishers } = useGetPublishers();
   const { books } = useGetBooks();
+
   const genderTypes = enumToSelectFieldItems(Genders);
+  const bookTypes = enumToSelectFieldItems(BookType);
+  const countrys = enumToSelectFieldItems(COUNTRY);
 
   const form = useForm<z.infer<typeof NewAuthorSchema>>({
     resolver: zodResolver(NewAuthorSchema),
@@ -48,19 +52,26 @@ export const NewAuthorForm = (locales: {}) => {
         .then((data) => {
           if (data?.error) {
             form.reset();
-            setError(data.error);
+            switch (data?.error) {
+              case "invalid_fields":
+                setError(locale.something_went_wrong);
+                break;
+              case "title_exists":
+                setError(locale.invalid_fields);
+                break;
+            }
           }
           if (data?.success) {
-            setSuccess(data.success);
             form.reset();
+            setSuccess(locale.success);
           }
         })
-        .catch(() => setError("Something went wrong"));
+        .catch(() => setError(locale.something_went_wrong));
     });
   };
 
   return (
-    <FormCardWrapper headerLabel="New Publisher">
+    <FormCardWrapper headerLabel={locale.new_author}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
@@ -68,36 +79,39 @@ export const NewAuthorForm = (locales: {}) => {
               formControl={form.control}
               id="author_first_name"
               required
-              text="Author's first name"
+              text={locale.author_first_name}
               disabled={isPending}
             />
             <FormTextInput
               formControl={form.control}
               id="author_last_name"
-              text="Author's last name"
+              text={locale.author_last_name}
               disabled={isPending}
             />
 
             <FormDatePickerInput
               formControl={form.control}
               id="dob"
-              text="Date of birth"
+              text={locale.author_dob}
               disabled={isPending}
             />
-            <FormTextInput
+            <FormSelectInput
+              items={countrys}
+              formSetValue={form.setValue}
               formControl={form.control}
+              placeholder={locale.country_placeholder}
               id="author_country"
-              text="Publisher's origin"
+              text={locale.author_country}
               disabled={isPending}
             />
             <FormSelectInput
               formSetValue={form.setValue}
-              placeholder="Select Gender"
+              placeholder={locale.gender_placeholder}
               formControl={form.control}
               items={genderTypes}
               id="gender"
               required
-              text="Gender"
+              text={locale.gender}
               disabled={isPending}
             />
 
@@ -111,11 +125,12 @@ export const NewAuthorForm = (locales: {}) => {
               })}
               formControl={form.control}
               id="publisherId"
-              placeholder="Select Publisher"
-              text="Author's Publisher"
+              placeholder={locale.publisher_placeholder}
+              text={locale.publisher_author}
               disabled={isPending}
             />
             <FormSelectInput
+              formSetValue={form.setValue}
               items={books?.map((book) => {
                 return {
                   value: book.id,
@@ -123,15 +138,18 @@ export const NewAuthorForm = (locales: {}) => {
                 };
               })}
               formControl={form.control}
-              placeholder="Select favorite book"
+              placeholder={locale.book_favorite_placeholder}
               id="favorite_bookId"
-              text="Author's favorite book"
+              text={locale.author_favorite_book}
               disabled={isPending}
             />
-            <FormTextInput
+            <FormSelectInput
+              items={bookTypes}
+              formSetValue={form.setValue}
+              placeholder={locale.favorite_type_placeholder}
               formControl={form.control}
               id="favorite_book_category"
-              text="Authors's favorite book category"
+              text={locale.favorite_book_category}
               disabled={isPending}
             />
           </div>
@@ -142,7 +160,7 @@ export const NewAuthorForm = (locales: {}) => {
             type="submit"
             className="flex m-auto w-3/4"
           >
-            Add
+            {locale.insert_author}
           </Button>
         </form>
       </Form>

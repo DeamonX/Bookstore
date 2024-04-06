@@ -9,3 +9,15 @@ export const getAuthors = async () => {
     return null;
   }
 };
+export const getAuthorsWithPublisher = async () => {
+  try {
+    return await db.author.findMany({
+      include: {
+        Publisher: true,
+      },
+    });
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};

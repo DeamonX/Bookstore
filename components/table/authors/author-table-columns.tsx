@@ -59,5 +59,12 @@ export function authorTableColumns({
         text: locale.favorite_book_category,
       },
     }),
+    TextWithFilterTableColumn<Author>({
+      id: locale.publisher_name,
+      accessorKey: "Publisher.publisher_name",
+      sortingButtonState: {
+        text: locale.publisher_name,
+      },
+    }),
   ];
 }

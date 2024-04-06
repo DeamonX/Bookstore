@@ -109,7 +109,7 @@ export default function FormSelectInput<T extends FieldValues>({
                   className="h-7 mb-2 px-2 border border-solid border-input"
                 />
                 <CommandEmpty>{emptySelect}</CommandEmpty>
-                <CommandGroup className="overflow-auto">
+                <CommandGroup className="max-h-[300px] overflow-auto">
                   {expandedItems.map((item) => (
                     <CommandItem
                       value={item.value}

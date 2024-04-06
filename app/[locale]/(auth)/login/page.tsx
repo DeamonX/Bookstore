@@ -8,7 +8,7 @@ export default async function LoginPage() {
     <LoginForm
       locale={{
         OAuthAccountNotLinked: authT("OAuthAccountNotLinked"),
-        something_went_wrong: genericT("something_went_wrong"),
+        something_went_wrong: genericT("error.something_went_wrong"),
         email: genericT("email"),
         password: genericT("password"),
         welcome_back: authT("welcome_back"),

@@ -16,6 +16,7 @@ import { format, isValid, parse } from "date-fns";
 import { Calendar } from "../ui/calendar";
 import { useState } from "react";
 import { Input } from "../ui/input";
+import { useLocale } from "next-intl";
 
 type FormDatePickerInputModel<T extends FieldValues> = {
   formControl: Control<T>;
@@ -36,6 +37,8 @@ export default function FormDatePickerInput<T extends FieldValues>({
   required = false,
   disabled = false,
 }: FormDatePickerInputModel<T>) {
+  const locale = useLocale();
+
   const formDate = useWatch({ name: id }) as Date | string;
   const newDate = new Date(formDate);
   const dateInit = isValid(newDate) ? newDate : undefined;
@@ -72,7 +75,7 @@ export default function FormDatePickerInput<T extends FieldValues>({
             <fieldset className="relative w-full">
               <Input
                 className={`${error && `border border-red-500`}`}
-                placeholder="éééé.hh.nn"
+                placeholder={locale === "en" ? "yyyy.mm.dd" : "éééé.hh.nn"}
                 onChange={(e) => {
                   handleInputChange(e, field.onChange);
                 }}

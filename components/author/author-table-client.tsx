@@ -10,5 +10,6 @@ type AuthorTableClientModel = {
 };
 
 export function AuthorTableClient({ authors, locale }: AuthorTableClientModel) {
+  console.log(authors);
   return <DataTable columns={authorTableColumns({ locale })} data={authors} />;
 }
