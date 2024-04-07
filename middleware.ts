@@ -3,9 +3,10 @@
 import createMiddleware from "next-intl/middleware";
 import { auth } from "./auth";
 import { apiAuthPrefix, authRoutes, protectedRoutes } from "@/routes";
+import { locales } from "./i18n";
 
 const intlMiddelware = createMiddleware({
-  locales: ["en", "hu"],
+  locales: locales,
   defaultLocale: "en",
 });
 // béta verzió miatti függvény visszatérési hiba, a return null értékkel van problémája.

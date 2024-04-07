@@ -236,6 +236,11 @@
       "email_taken": "Email already in use!"
     }
   },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "hu": "Hungarian",
+    "en": "English"
+  },
   "Validation": {
     "required": {
       "email": "Filling in the e-mail address is mandatory!",

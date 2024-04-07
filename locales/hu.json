@@ -255,6 +255,12 @@
       "title_exists": "Már létezik könyv ilyen címmel!"
     }
   },
+
+  "LocaleSwitcher": {
+    "label": "Válassz nyelvet",
+    "hu": "Magyar",
+    "en": "Angol"
+  },
   "Publisher": {
     "new": "Új kiadó",
     "page_title": "Kiadók",
