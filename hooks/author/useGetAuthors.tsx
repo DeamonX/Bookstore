@@ -1,22 +1,22 @@
 import { toast } from "@/components/ui/use-toast";
 import { getAuthors } from "@/data/author";
 import { Author } from "@prisma/client";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 export default function useGetAuthors() {
   const [authors, setAuthors] = useState<Author[]>([]);
 
-  const fetchAuthors = async () => {
+  const fetchAuthors = useCallback(async () => {
     const authorResponse = await getAuthors();
     if (authorResponse === null) {
       toast({
         variant: "destructive",
-        description: "HIBA!",
+        description: "Hiba történt a lekérdezés során!",
       });
     } else {
       setAuthors(authorResponse);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchAuthors();

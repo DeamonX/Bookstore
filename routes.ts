@@ -3,7 +3,7 @@
  * These routes do not require authentication
  * @type {string[]}
  */
-export const protectedRoutes = [""];
+export const protectedRoutes = ["/hu/admin", "/en/admin"];
 
 /**
  * An array of routes that are used for authentication

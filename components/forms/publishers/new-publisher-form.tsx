@@ -54,7 +54,7 @@ export const NewPublisherForm = ({ locale }: BaseClientProps) => {
   };
 
   return (
-    <FormCardWrapper headerLabel={locale.new_publisher}>
+    <FormCardWrapper headerLabel={locale.new}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">

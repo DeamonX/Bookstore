@@ -236,6 +236,10 @@
       "email_taken": "Email already in use!"
     }
   },
+  "noPermission": {
+    "title": "You do not have permission to visit this site!",
+    "back": "Go back"
+  },
   "LocaleSwitcher": {
     "label": "Change language",
     "hu": "Hungarian",

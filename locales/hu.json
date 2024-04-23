@@ -255,6 +255,10 @@
       "title_exists": "Már létezik könyv ilyen címmel!"
     }
   },
+  "noPermission": {
+    "title": "Nincs jogosultságod ennek az oldalnak a megtekintéséhéz!",
+    "back": "Vissza"
+  },
 
   "LocaleSwitcher": {
     "label": "Válassz nyelvet",

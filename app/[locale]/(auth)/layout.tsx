@@ -1,4 +1,6 @@
+import LocaleSwitcher from "@/components/locale/locale-switcher";
 import { ModeToggle } from "@/components/themes/theme-switcher";
+import { getTranslations } from "next-intl/server";
 import { GiWhiteBook } from "react-icons/gi";
 
 export default async function AuthLayout({
@@ -8,6 +10,7 @@ export default async function AuthLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  const localeT = await getTranslations("LocaleSwitcher");
   return (
     <html lang={locale}>
       <body>
@@ -17,7 +20,14 @@ export default async function AuthLayout({
               <GiWhiteBook className="animate-pluse-slow" size={110} />
             </div>
           </div>
-          <div className="absolute right-0 m-4">
+          <div className="flex absolute right-0 m-4">
+            <LocaleSwitcher
+              locale={{
+                placeholder: localeT("label"),
+                hu: localeT("hu"),
+                en: localeT("en"),
+              }}
+            />
             <ModeToggle />
           </div>
           <main className="flex w-1/2 justify-center items-center">

@@ -22,16 +22,13 @@ export default auth((req) => {
 
   // Authentikációs hívásokat ellenőrzések nélkül engedjük.
   if (isApiAuthRoute) {
-    console.log("isApiAuthRoute");
     return;
   }
   const i18Response = intlMiddelware(req);
   if (isAuthRoute) {
     if (isLoggedIn) {
-      console.log("isAuthRoute - isLoggedIn");
       return Response.redirect(new URL("/", nextUrl));
     }
-    console.log("isAuthRoute - !isLoggedIn");
     return i18Response;
   }
 
@@ -42,8 +39,6 @@ export default auth((req) => {
     }
 
     const encodedCallbackUrl = encodeURIComponent(callbackUrl);
-
-    console.log("login redirect");
     return Response.redirect(
       new URL(
         `/${isEnglish ? "en" : "hu"}/login?callbackUrl=${encodedCallbackUrl}`,
@@ -51,7 +46,17 @@ export default auth((req) => {
       )
     );
   }
-  console.log("i18n redirect");
+  if (isLoggedIn && isProtected) {
+    if (pathname.includes("admin")) {
+      if (req.auth?.user.role === "ADMIN") {
+        return i18Response;
+      } else {
+        return Response.redirect(
+          new URL(`/${isEnglish ? "en" : "hu"}/no-permission`, nextUrl)
+        );
+      }
+    }
+  }
   return i18Response;
 });
 
