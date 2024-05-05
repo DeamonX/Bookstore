@@ -12,6 +12,7 @@
     "date_of_establishment": "Date of Establishment",
     "email": "Email",
     "password": "Password",
+    "password_repeat": "Repeat password",
     "name": "Name",
     "error": {
       "email_not_exists": "E-mail does not exist",
@@ -21,16 +22,28 @@
     "success": {
       "add_success": "Successful creation!"
     }
-  }, 
-  "Admin":{
-    "title":"This page is authorized only Administrator users has access!"
+  },
+  "Home": {
+    "welcome": "Welcome",
+    "visitor": "Visitor",
+    "text1": "This website is a terribly simple example of how we can use this framework!",
+    "text2": "Within the application, you can see three tables per guest with data in the database, which you can navigate to using the navigation bar.",
+    "text3": "With the Administrator role, you can access a permission-managed page or add new items to the table."
+  },
+  "Admin": {
+    "title": "This page is authorized, only Administrator users has access!"
+  },
+  "ThemeSwitcher": {
+    "title": "Switch theme",
+    "dark": "Dark theme",
+    "light": "Light theme"
   },
   "Navigation": {
     "home": "Home",
     "books": "Books",
     "authors": "Authors",
     "publishers": "Publishers",
-    "admin":"Administrator"
+    "admin": "Administrator"
   },
   "Country": {
     "AFGHANISTAN": "Afghanistan",
@@ -233,7 +246,7 @@
     "logout": "Log out",
     "OAuthAccountNotLinked": "Email already in use with different provider!",
     "welcome_back": "Welcome back",
-    "invalid_credentials":"There is not an e-mail and password match for this input!",
+    "invalid_credentials": "There is not an e-mail and password match for this input!",
     "do_not_have_account": "Don't have an account?",
     "forgot_password": "Forgot password?",
     "create_account": "Create an account",

@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Szakdolgozat",
   description: "Szakdolgozatot alátámasztó webalkalmazás",
-  authors:[{name:'Klein Tamás'}],
+  authors: [{ name: "Klein Tamás" }],
 };
 
 export default function RootLayout({
@@ -22,15 +22,10 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
-          <Footer />
         </ThemeProvider>
+        <Footer />
       </body>
     </html>
   );

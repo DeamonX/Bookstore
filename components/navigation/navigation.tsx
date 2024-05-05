@@ -10,6 +10,7 @@ export default async function Navigation() {
   const session = await auth();
   const navigationT = await getTranslations("Navigation");
   const localeT = await getTranslations("LocaleSwitcher");
+  const themeT = await getTranslations("ThemeSwitcher");
   return (
     <nav className="flex w-full">
       <div className="flex justify-center gap-10 items-center grow">
@@ -17,8 +18,11 @@ export default async function Navigation() {
         <Link href={"/books"}>{navigationT("books")}</Link>
         <Link href={"/authors"}>{navigationT("authors")}</Link>
         <Link href={"/publishers"}>{navigationT("publishers")}</Link>
-        {session?.user.role === "ADMIN" ? 
-        <Link href={"/admin"}>{navigationT("admin")}</Link> : <></>}
+        {session?.user.role === "ADMIN" ? (
+          <Link href={"/admin"}>{navigationT("admin")}</Link>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="flex ml-auto my-2 mx-4">
         <LocaleSwitcher
@@ -28,7 +32,13 @@ export default async function Navigation() {
             en: localeT("en"),
           }}
         />
-        <ModeToggle />
+        <ModeToggle
+          locale={{
+            title: themeT("title"),
+            light: themeT("light"),
+            dark: themeT("dark"),
+          }}
+        />
         {session === null ? <SignInButton /> : <ProfileButton {...session} />}
       </div>
     </nav>

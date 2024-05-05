@@ -11,6 +11,7 @@ export default async function AuthLayout({
   params: { locale: string };
 }) {
   const localeT = await getTranslations("LocaleSwitcher");
+  const themeT = await getTranslations("ThemeSwitcher");
   return (
     <html lang={locale}>
       <body>
@@ -28,7 +29,13 @@ export default async function AuthLayout({
                 en: localeT("en"),
               }}
             />
-            <ModeToggle />
+            <ModeToggle
+              locale={{
+                title: themeT("title"),
+                light: themeT("light"),
+                dark: themeT("dark"),
+              }}
+            />
           </div>
           <main className="flex w-1/2 justify-center items-center">
             {children}

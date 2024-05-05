@@ -13,6 +13,7 @@ export default async function RegisterPage() {
         name: genericT("name"),
         email: genericT("email"),
         password: genericT("password"),
+        password_repeat: genericT("password_repeat"),
         error_invalid_fields: genericT("error.invalid_fields"),
         error_email_taken: authT("error.email_taken"),
       }}

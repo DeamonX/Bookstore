@@ -12,6 +12,7 @@
     "date_of_establishment": "Alapítás dátuma",
     "email": "E-mail cím",
     "password": "Jelszó",
+    "password_repeat": "Jelszó megerősítés",
     "name": "Név",
     "error": {
       "invalid_fields": "Érvénytelen mezők!",
@@ -22,15 +23,27 @@
       "add_success": "Sikeres létrehozás!"
     }
   },
-  "Admin":{
-    "title":"Ez egy authorizált oldal, amihez csak adminisztrátor szerepkörrel lehet hozzáférni!"
+  "Home": {
+    "welcome": "Üdvözlöm",
+    "visitor": "Vendég",
+    "text1": "Ez a weboldal egy rettentően egyszerű példája annak, hogy hogyan is tudjuk felhasználni ezt a keretrendszert!",
+    "text2": "Az alkalmazás keretein belül vendégként három táblázatot láthatunk azadatbázisban lévő adatokkal, ahova a navigációs sávban tudunk elnavigálni.",
+    "text3": "Adminisztrátor szerepkörrel, hozzáférhetünk egy jogosultáság kezelt oldalhoz, illetve tudunk hozzáadni új elemeket a táblázatba."
+  },
+  "Admin": {
+    "title": "Ez egy authorizált oldal, amihez csak adminisztrátor szerepkörrel lehet hozzáférni!"
+  },
+  "ThemeSwitcher": {
+    "title": "Válassz témát!",
+    "dark": "Sötét téma",
+    "light": "Világos téma"
   },
   "Navigation": {
     "home": "Főoldal",
     "books": "Könyvek",
     "authors": "Írók",
     "publishers": "Kiadók",
-    "admin":"Adminisztrátor"
+    "admin": "Adminisztrátor"
   },
   "Country": {
     "AFGHANISTAN": "Afganisztán",
@@ -231,7 +244,7 @@
   "Auth": {
     "login": "Belépés",
     "logout": "Kilépés",
-    "invalid_credentials":"Nem található ilyen e-mail cím és jelszó páros!",
+    "invalid_credentials": "Nem található ilyen e-mail cím és jelszó páros!",
     "OAuthAccountNotLinked": "Ez az e-mail cím már hozzá van társítva egy fiókhoz!",
     "welcome_back": "Üdvözöljük újra!",
     "do_not_have_account": "Nincs még fiókod?",

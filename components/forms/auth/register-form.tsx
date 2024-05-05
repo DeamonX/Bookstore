@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
-import { FormSuccess } from "@/components/form-success";
 import { RegisterSchema } from "@/schemas/auth/schema";
 import { register } from "@/actions/register";
 import { AuthCardWrapper } from "../../cards/auth-card";
@@ -31,6 +30,7 @@ export const RegisterForm = ({ locale }: BaseClientProps) => {
       email: "",
       password: "",
       name: "",
+      password_repeat: "",
     },
   });
 
@@ -104,6 +104,24 @@ export const RegisterForm = ({ locale }: BaseClientProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{locale.password}</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={isPending}
+                      placeholder="******"
+                      type="password"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password_repeat"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{locale.password_repeat}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
