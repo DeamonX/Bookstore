@@ -15,17 +15,22 @@
     "name": "Név",
     "error": {
       "invalid_fields": "Érvénytelen mezők!",
-      "something_went_wrong": "Probléma merült fel a folyamat során!"
+      "something_went_wrong": "Probléma merült fel a folyamat során!",
+      "email_not_exists": "Nem létezik fiók ezzel az e-mail címmel!"
     },
     "success": {
       "add_success": "Sikeres létrehozás!"
     }
   },
+  "Admin":{
+    "title":"Ez egy authorizált oldal, amihez csak adminisztrátor szerepkörrel lehet hozzáférni!"
+  },
   "Navigation": {
     "home": "Főoldal",
     "books": "Könyvek",
     "authors": "Írók",
-    "publishers": "Kiadók"
+    "publishers": "Kiadók",
+    "admin":"Adminisztrátor"
   },
   "Country": {
     "AFGHANISTAN": "Afganisztán",
@@ -226,6 +231,7 @@
   "Auth": {
     "login": "Belépés",
     "logout": "Kilépés",
+    "invalid_credentials":"Nem található ilyen e-mail cím és jelszó páros!",
     "OAuthAccountNotLinked": "Ez az e-mail cím már hozzá van társítva egy fiókhoz!",
     "welcome_back": "Üdvözöljük újra!",
     "do_not_have_account": "Nincs még fiókod?",

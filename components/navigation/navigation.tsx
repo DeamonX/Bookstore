@@ -17,6 +17,8 @@ export default async function Navigation() {
         <Link href={"/books"}>{navigationT("books")}</Link>
         <Link href={"/authors"}>{navigationT("authors")}</Link>
         <Link href={"/publishers"}>{navigationT("publishers")}</Link>
+        {session?.user.role === "ADMIN" ? 
+        <Link href={"/admin"}>{navigationT("admin")}</Link> : <></>}
       </div>
       <div className="flex ml-auto my-2 mx-4">
         <LocaleSwitcher

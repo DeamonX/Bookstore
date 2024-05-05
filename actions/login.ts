@@ -14,15 +14,14 @@ export const login = async (
   const validatedFields = LoginSchema.safeParse(values);
 
   if (!validatedFields.success) {
-    return { error: "Invalid fields!" };
+    return { error: "invalid_fields" };
   }
 
   const { email, password } = validatedFields.data;
 
   const existingUser = await getUserByEmail(email);
-
   if (!existingUser || !existingUser.email || !existingUser.password) {
-    return { error: "Email does not exist!" };
+    return { error: "email_not_exists" };
   }
 
   try {
@@ -35,12 +34,12 @@ export const login = async (
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return { error: "Invalid credentials!" };
+          return { error: "invalid_credentials" };
         default:
-          return { error: "Something went wrong!" };
+          return { error: "error" };
       }
+    }else{
+      throw error;
     }
-
-    throw error;
   }
 };

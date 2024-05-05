@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 
 import { Input } from "@/components/ui/input";
 import {
@@ -51,7 +50,17 @@ export const LoginForm = ({ locale }: BaseClientProps) => {
         .then((data) => {
           if (data?.error) {
             form.reset();
-            setError(data.error);
+            switch (data.error){
+              case 'invalid_credentials':
+                setError(locale.invalid_credentials)
+                break;
+              case 'email_not_exists':
+                setError(locale.email_not_exists)
+                break;
+              default:
+                setError(locale.something_went_wrong);
+                break;
+            }
           }
         })
         .catch(() => setError(locale.something_went_wrong));
@@ -101,16 +110,6 @@ export const LoginForm = ({ locale }: BaseClientProps) => {
                     />
                   </FormControl>
                   <FormMessage />
-                  {/* <div className="flex w-full">
-                    <Button
-                      size="sm"
-                      variant="link"
-                      asChild
-                      className="px-0 font-normal"
-                    >
-                      <Link href="/reset">{locale.forgot_password}</Link>
-                    </Button>
-                  </div> */}
                 </FormItem>
               )}
             />

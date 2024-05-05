@@ -14,18 +14,23 @@
     "password": "Password",
     "name": "Name",
     "error": {
+      "email_not_exists": "E-mail does not exist",
       "invalid_fields": "Invalid fields!",
       "something_went_wrong": "Something went wrong!"
     },
     "success": {
       "add_success": "Successful creation!"
     }
+  }, 
+  "Admin":{
+    "title":"This page is authorized only Administrator users has access!"
   },
   "Navigation": {
     "home": "Home",
     "books": "Books",
     "authors": "Authors",
-    "publishers": "Publishers"
+    "publishers": "Publishers",
+    "admin":"Administrator"
   },
   "Country": {
     "AFGHANISTAN": "Afghanistan",
@@ -228,6 +233,7 @@
     "logout": "Log out",
     "OAuthAccountNotLinked": "Email already in use with different provider!",
     "welcome_back": "Welcome back",
+    "invalid_credentials":"There is not an e-mail and password match for this input!",
     "do_not_have_account": "Don't have an account?",
     "forgot_password": "Forgot password?",
     "create_account": "Create an account",

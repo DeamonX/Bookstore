@@ -9,6 +9,9 @@ export default async function LoginPage() {
       locale={{
         OAuthAccountNotLinked: authT("OAuthAccountNotLinked"),
         something_went_wrong: genericT("error.something_went_wrong"),
+        email_not_exists: genericT("error.email_not_exists"),
+        invalid_fields: genericT("error.invalid_fields"),
+        invalid_credentials: authT("invalid_credentials"),
         email: genericT("email"),
         password: genericT("password"),
         welcome_back: authT("welcome_back"),
