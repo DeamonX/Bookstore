@@ -1,5 +1,3 @@
-// export { auth as default } from "./auth";
-
 import createMiddleware from "next-intl/middleware";
 import { auth } from "./auth";
 import { apiAuthPrefix, authRoutes, protectedRoutes } from "@/routes";
@@ -9,8 +7,8 @@ const intlMiddelware = createMiddleware({
   locales: locales,
   defaultLocale: "en",
 });
-// béta verzió miatti függvény visszatérési hiba, a return null értékkel van problémája.
 export default auth((req) => {
+  
   const { nextUrl } = req;
   const { pathname } = nextUrl;
   const isLoggedIn = !!req.auth;
