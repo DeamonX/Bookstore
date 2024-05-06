@@ -27,8 +27,8 @@
     "welcome": "Üdvözlöm",
     "visitor": "Vendég",
     "text1": "Ez a weboldal egy rettentően egyszerű példája annak, hogy hogyan is tudjuk felhasználni ezt a keretrendszert!",
-    "text2": "Az alkalmazás keretein belül vendégként három táblázatot láthatunk azadatbázisban lévő adatokkal, ahova a navigációs sávban tudunk elnavigálni.",
-    "text3": "Adminisztrátor szerepkörrel, hozzáférhetünk egy jogosultáság kezelt oldalhoz, illetve tudunk hozzáadni új elemeket a táblázatba."
+    "text2": "Az alkalmazás keretein belül vendégként három táblázatot láthatunk az adatbázisban lévő adatokkal, ahova a navigációs sáv segítségével tudunk elnavigálni.",
+    "text3": "Adminisztrátor szerepkörrel hozzáférhetünk egy jogosultság kezelt oldalhoz, illetve tudunk hozzáadni új elemeket a táblázatokhoz."
   },
   "Admin": {
     "title": "Ez egy authorizált oldal, amihez csak adminisztrátor szerepkörrel lehet hozzáférni!"
