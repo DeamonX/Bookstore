@@ -12,7 +12,6 @@ export default async function addBook(values: z.infer<typeof NewBookSchema>) {
     return { error: "invalid_fields" };
   }
   const existingBook = await getBookByName(validatedFields.data.title);
-  console.log(existingBook);
   if (existingBook) {
     return { error: "title_exists" };
   }

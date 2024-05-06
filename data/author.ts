@@ -5,7 +5,6 @@ export const getAuthors = async () => {
   try {
     return await db.author.findMany();
   } catch (e) {
-    console.log(e);
     return null;
   }
 };
@@ -17,7 +16,6 @@ export const getAuthorsWithPublisher = async () => {
       },
     });
   } catch (e) {
-    console.log(e);
     return null;
   }
 };
