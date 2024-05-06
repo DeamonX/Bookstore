@@ -8,7 +8,7 @@ export default async function HomePage() {
     <div className="pt-10 w-full px-20">
       <span className="flex justify-center text-4xl">
         {homeT("welcome")}{" "}
-        {session?.user.name ? session.user.name : homeT("visitor")}
+        {session?.user.name ? session.user.name : homeT("visitor")}!
       </span>
       <span className="flex pt-12 text-xl">{homeT("text1")}</span>
       <span className="flex pt-2 text-xl">{homeT("text2")}</span>
