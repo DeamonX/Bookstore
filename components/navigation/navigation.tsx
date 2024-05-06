@@ -12,7 +12,7 @@ export default async function Navigation() {
   const localeT = await getTranslations("LocaleSwitcher");
   const themeT = await getTranslations("ThemeSwitcher");
   return (
-    <nav className="flex w-full">
+    <nav className="flex w-full px-10">
       <div className="flex justify-center gap-10 items-center grow">
         <Link href={"/"}>{navigationT("home")}</Link>
         <Link href={"/books"}>{navigationT("books")}</Link>

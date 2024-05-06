@@ -2,7 +2,7 @@ import { BaseClientProps } from "@/models/components/type";
 import { CheckIcon } from "@radix-ui/react-icons";
 
 export default function AdminPageClient ({locale}:BaseClientProps){
-    return (<div>
+    return (<div className="px-20">
         <div className="flex justify-center text-3xl mt-20">
           <span>{locale.title}</span>
         </div>
